@@ -87,7 +87,7 @@ public class RectangleTest {
    */
   private void noIntersectionHelper(Rectangle recA, Rectangle recB, String type) {
     try {
-      if (type == "IOU") {
+      if (type.equals("IOU")) {
         float res = recA.intersectionOverUnion(recB);
       } else {
         Rectangle rec = recA.intersection(recB);
