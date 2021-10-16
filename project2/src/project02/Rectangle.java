@@ -24,7 +24,7 @@ public class Rectangle {
   public Rectangle(int x, int y, int w, int h) throws IllegalArgumentException {
     this.x = x;
     this.y = y;
-    if (h < 0 || w < 0) {
+    if (h <= 0 || w <= 0) {
       throw new IllegalArgumentException("Width and height cannot be negative!");
     } else {
       this.w = w;
@@ -41,10 +41,12 @@ public class Rectangle {
    * @return whether the two rectangles overlap with each other or not
    */
   public Boolean overlap(Rectangle other) {
+    // determines the center differences between the two rectangles
     int centerXDiff = Math.abs(x + w/2 - (other.x + other.w/2));
     int centerYDiff = Math.abs(y + h/2 - (other.y + other.h/2));
     int halfWidthSum = (other.w + w) / 2;
     int halfHeightSum = (other.h + h) / 2;
+    // if the center differences are both smaller than the half width and half height sum, then the rectangles overlap
     return centerXDiff < halfWidthSum && centerYDiff < halfHeightSum;
   }
 

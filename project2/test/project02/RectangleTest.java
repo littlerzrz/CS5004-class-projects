@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.NoSuchElementException;
 import org.junit.Before;
 import org.junit.Test;
+import org.w3c.dom.css.Rect;
 
 public class RectangleTest {
 
@@ -34,6 +35,9 @@ public class RectangleTest {
   public void invalidConstructorTest() {
     invalidConstructorHelper(3, 4, -10, 4);
     invalidConstructorHelper(-10, 3, 1, -2);
+    invalidConstructorHelper(0,0,0,0);
+    invalidConstructorHelper(1,3,1,0);
+    invalidConstructorHelper(14,-10,0,1);
   }
 
   /**
@@ -57,11 +61,14 @@ public class RectangleTest {
    */
   @Test
   public void overlap() {
+    //overlaps
     assertTrue(rec1.overlap(rec2));
     assertTrue(rec1.overlap(rec5));
     assertTrue(rec1.overlap(rec1));
     assertTrue(rec2.overlap(rec4));
+    //touch but not overlap
     assertFalse(rec2.overlap(rec3));
+    //no overlap at all
     assertFalse(rec1.overlap(rec6));
     assertFalse(rec6.overlap(rec3));
   }
@@ -101,7 +108,7 @@ public class RectangleTest {
    * Overload of the noIntersectionHelper to work without the input type
    */
   private void noIntersectionHelper(Rectangle recA, Rectangle recB) {
-    noIntersectionHelper(recA, recB, "intersection");
+    noIntersectionHelper(recA, recB, "other");
   }
 
   /**
@@ -109,6 +116,7 @@ public class RectangleTest {
    */
   @Test
   public void union() {
+    assertEquals("x:-10, y:4, w:30, h:21", rec1.union(rec2).toString());
     assertEquals("x:-5, y:-20, w:25, h:39", rec3.union(rec1).toString());
     assertEquals("x:-10, y:-20, w:30, h:45", rec2.union(rec3).toString());
     assertEquals("x:-20, y:-30, w:80, h:90", rec5.union(rec1).toString());
