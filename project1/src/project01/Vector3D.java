@@ -1,8 +1,8 @@
 package project01;
 
 /**
- * Represents a vector in 3D space that has three components: x, y, z; The project01.Vector3D class involves
- * different operations;
+ * Represents a vector in 3D space that has three components: x, y, z; The project01.Vector3D class
+ * involves different operations;
  */
 
 public class Vector3D {
@@ -80,9 +80,9 @@ public class Vector3D {
    * @return the calculated new coordinate
    * @throws IllegalStateException when this operation cannot be completed
    */
-  private double getNewCoordinate(double cord) throws IllegalStateException{
+  private double getNewCoordinate(double cord) throws IllegalStateException {
     double magnitude = getMagnitude();
-    if (cord == 0) {
+    if (magnitude == 0) {
       throw new IllegalStateException("Normalization cannot be completed, try a different object");
     }
     return cord / magnitude;
@@ -90,9 +90,10 @@ public class Vector3D {
 
   /**
    * Computes and returns a normalized version of the vector
+   *
    * @return the normalized version of the vector
    */
-  public Vector3D normalize() {
+  public Vector3D normalize() throws IllegalStateException {
     double newX = getNewCoordinate(x);
     double newY = getNewCoordinate(y);
     double newZ = getNewCoordinate(z);
@@ -101,17 +102,19 @@ public class Vector3D {
 
   /**
    * Computes and returns result of adding this vector to another vector
+   *
    * @param otherVector another vector
    * @return result of adding this vector to another vector
    */
   public Vector3D add(Vector3D otherVector) {
     double otherX = otherVector.getX(), otherY = otherVector.getY(), otherZ = otherVector.getZ();
-    double newX = x + otherX, newY = y + otherY, newZ = z+ otherZ;
+    double newX = x + otherX, newY = y + otherY, newZ = z + otherZ;
     return new Vector3D(newX, newY, newZ);
   }
 
   /**
    * Computes and returns the result of multiplying this vector by a constant
+   *
    * @param factor a constant
    * @return the result of multiplying this vector by a constant
    */
@@ -121,6 +124,7 @@ public class Vector3D {
 
   /**
    * Computes and returns the dot product of this vector and another vector
+   *
    * @param otherVector another vector object for computation
    * @return returns the dot product of this vector and another vector
    */
@@ -131,6 +135,7 @@ public class Vector3D {
 
   /**
    * Computes and returns the angle between two vectors in degrees
+   *
    * @param otherVector another vector object
    * @return returns the angle between two vectors in degrees
    * @throws IllegalStateException when this operation cannot be completed.
