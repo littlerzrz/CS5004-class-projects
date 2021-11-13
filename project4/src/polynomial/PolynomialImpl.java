@@ -16,7 +16,7 @@ public class PolynomialImpl implements Polynomial {
       Comparator.reverseOrder());
 
   /**
-   * Constructs the PolynomialImpl
+   * Constructs the PolynomialImpl with no inputs
    */
   public PolynomialImpl() {
   }
