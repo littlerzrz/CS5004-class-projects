@@ -1,7 +1,6 @@
 package project02;
 
 import java.util.NoSuchElementException;
-import org.w3c.dom.css.Rect;
 
 /**
  * This is a class that represents a Rectangle in the 2 dimensional system
@@ -126,9 +125,9 @@ public class Rectangle {
 
     int newX = Math.min(x, other.x);
     int newY = Math.min(y, other.y);
-    int newTopRight = Math.max(bottomRightX, otherBR);
+    int newBottomRight = Math.max(bottomRightX, otherBR);
     int newTopLeft = Math.max(topLeftY, otherTL);
-    int newW = Math.abs(newTopRight - newX);
+    int newW = Math.abs(newBottomRight - newX);
     int newH = Math.abs(newTopLeft - newY);
     return new Rectangle(newX, newY, newW, newH);
   }

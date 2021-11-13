@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.NoSuchElementException;
 import org.junit.Before;
 import org.junit.Test;
-import org.w3c.dom.css.Rect;
 
 public class RectangleTest {
 
